@@ -114,7 +114,7 @@ contract DeployAltDA is Script {
         vm.broadcast(msg.sender);
         IProxy proxy = IProxy(
             DeployUtils.create2({
-                _name: "forge-artifacts/Proxy.sol/Proxy.json",
+                _name: "Proxy.sol/Proxy.json",
                 _salt: salt,
                 _args: DeployUtils.encodeConstructor(abi.encodeCall(IProxy.__constructor__, (msg.sender)))
             })
