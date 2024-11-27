@@ -12,17 +12,17 @@ import { DeployUtils } from "scripts/libraries/DeployUtils.sol";
 import { Claim, GameTypes, Duration } from "src/dispute/lib/Types.sol";
 
 // Interfaces
-import { ISystemConfig } from "src/L1/interfaces/ISystemConfig.sol";
-import { ISuperchainConfig } from "src/L1/interfaces/ISuperchainConfig.sol";
-import { IProxy } from "src/universal/interfaces/IProxy.sol";
+import { ISystemConfig } from "interfaces/L1/ISystemConfig.sol";
+import { ISuperchainConfig } from "interfaces/L1/ISuperchainConfig.sol";
+import { IProxy } from "interfaces/universal/IProxy.sol";
 import {
     IFaultDisputeGame,
     IBigStepper,
     IAnchorStateRegistry,
     IDelayedWETH
-} from "src/dispute/interfaces/IFaultDisputeGame.sol";
-import { IPermissionedDisputeGame } from "src/dispute/interfaces/IPermissionedDisputeGame.sol";
-import { IMIPS, IPreimageOracle } from "src/cannon/interfaces/IMIPS.sol";
+} from "interfaces/dispute/IFaultDisputeGame.sol";
+import { IPermissionedDisputeGame } from "interfaces/dispute/IPermissionedDisputeGame.sol";
+import { IMIPS, IPreimageOracle } from "interfaces/cannon/IMIPS.sol";
 
 /// @title DeployUpgrade
 /// @notice A deployment script for smart contract upgrades surrounding the Holocene hardfork.
