@@ -8,6 +8,7 @@ import { IAnchorStateRegistry } from "src/dispute/interfaces/IAnchorStateRegistr
 import { IDelayedWETH } from "src/dispute/interfaces/IDelayedWETH.sol";
 import { IBigStepper } from "src/dispute/interfaces/IBigStepper.sol";
 import { IDisputeGame } from "src/dispute/interfaces/IDisputeGame.sol";
+import { IFaultDisputeGame } from "src/dispute/interfaces/IFaultDisputeGame.sol";
 
 interface IPermissionedDisputeGame is IDisputeGame {
     struct ClaimData {
@@ -25,6 +26,19 @@ interface IPermissionedDisputeGame is IDisputeGame {
         uint32 subgameIndex;
         Position leftmostPosition;
         address counteredBy;
+    }
+
+    struct GameConstructorParams {
+        GameType gameType;
+        Claim absolutePrestate;
+        uint256 maxGameDepth;
+        uint256 splitDepth;
+        Duration clockExtension;
+        Duration maxClockDuration;
+        IBigStepper vm;
+        IDelayedWETH weth;
+        IAnchorStateRegistry anchorStateRegistry;
+        uint256 l2ChainId;
     }
 
     error AlreadyInitialized();
@@ -120,16 +134,7 @@ interface IPermissionedDisputeGame is IDisputeGame {
     function challenger() external view returns (address challenger_);
 
     function __constructor__(
-        GameType _gameType,
-        Claim _absolutePrestate,
-        uint256 _maxGameDepth,
-        uint256 _splitDepth,
-        Duration _clockExtension,
-        Duration _maxClockDuration,
-        IBigStepper _vm,
-        IDelayedWETH _weth,
-        IAnchorStateRegistry _anchorStateRegistry,
-        uint256 _l2ChainId,
+        IFaultDisputeGame.GameConstructorParams memory _params,
         address _proposer,
         address _challenger
     )
